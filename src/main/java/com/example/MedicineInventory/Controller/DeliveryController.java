@@ -33,6 +33,19 @@ public class DeliveryController {
         return "redirect:/deliveries";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editDelivery(@PathVariable Long id, Model model) {
+        Delivery delivery = deliveryService.getDeliveryById(id);
+        model.addAttribute("delivery", delivery);
+        return "delivery/form";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteDelivery(@PathVariable Long id) {
+        deliveryService.deleteDelivery(id);
+        return "redirect:/deliveries";
+    }
+
     
     @PostMapping("/api")
     @ResponseBody

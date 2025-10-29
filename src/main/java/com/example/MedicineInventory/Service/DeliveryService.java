@@ -23,4 +23,12 @@ public class DeliveryService {
         d.setStatus(status);
         return deliveryRepository.save(d);
     }
+
+    public Delivery getDeliveryById(Long id) {
+        return deliveryRepository.findById(id).orElseThrow();
+    }
+
+    public void deleteDelivery(Long id) {
+        deliveryRepository.deleteById(id);
+    }
 }
