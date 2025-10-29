@@ -1,5 +1,6 @@
 package com.example.MedicineInventory.Repository;
-
-public class BillingRepository {
+import com.example.MedicineInventory.Entity.Billing;
+import org.springframework.data.jpa.repository.JpaRepository;
+public interface BillingRepository extends JpaRepository<Billing,Long>{
     
 }

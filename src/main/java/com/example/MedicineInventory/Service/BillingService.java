@@ -1,5 +1,9 @@
 package com.example.MedicineInventory.Service;
-
-public class BillingService {
+import com.example.MedicineInventory.Entity.Billing;
+import java.util.List;
+public interface BillingService {
+    Billing createBill(Billing billing);
+    List<Billing> getAllBills();
+    Billing updatePaymentStatus(Long id,String status);
     
 }
