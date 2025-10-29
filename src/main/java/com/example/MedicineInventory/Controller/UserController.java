@@ -13,7 +13,7 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-    // Web routes
+    
     @GetMapping
     public String listUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
@@ -32,7 +32,7 @@ public class UserController {
         return "redirect:/users";
     }
 
-    // REST API routes
+    
     @PostMapping("/api")
     @ResponseBody
     public User addUser(@RequestBody User user) {

@@ -2,7 +2,7 @@ package com.example.MedicineInventory.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
-import lombok.AllArgsConstructor;
+import java.time.LocalDate;
 @Entity
 @Data
 @NoArgsConstructor
@@ -12,8 +12,10 @@ public class Medicine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String medicineId;
     private String name;
-    private int stock;
-    private String expiryDate;
+    private String supplier;
     private BigDecimal price;
+    private int stock;
+    private LocalDate expiryDate;
 }

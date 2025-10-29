@@ -1,7 +1,7 @@
 package com.example.MedicineInventory.Entity;
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.Instant;
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 @Entity
 @Data
@@ -13,12 +13,8 @@ public class Delivery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    private Order order;
-
+    private String orderId;
     private String deliveryPerson;
+    private LocalDate deliveryDate;
     private String status;
-    private Instant dispatchAt; 
-    private Instant DeliveredAt;
-    
 }

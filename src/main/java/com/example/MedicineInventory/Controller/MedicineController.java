@@ -1,24 +1,48 @@
 package com.example.MedicineInventory.Controller;
 import com.example.MedicineInventory.Entity.Medicine;
-import com.example.MedicineInventory.Repository.MedicineRepository;
+import com.example.MedicineInventory.Service.MedicineService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/medicines")
+@Controller
+@RequestMapping("/medicines")
 @RequiredArgsConstructor
 public class MedicineController {
-    private final MedicineRepository medicineRepo;
+    private final MedicineService medicineService;
 
-    @PostMapping
-    public Medicine addMedicine(@RequestBody Medicine m){
-        return medicineRepo.save(m);
+    
+    @GetMapping
+    public String listMedicines(Model model) {
+        model.addAttribute("medicines", medicineService.getAllMedicines());
+        return "medicines/list";
     }
 
-    @GetMapping
-    public List<Medicine> getAll(){
-        return medicineRepo.findAll();
+    @GetMapping("/new")
+    public String showForm(Model model) {
+        model.addAttribute("medicine", new Medicine());
+        return "medicines/form";
+    }
+
+    @PostMapping
+    public String saveMedicine(@ModelAttribute Medicine medicine) {
+        medicineService.addMedicine(medicine);
+        return "redirect:/medicines";
+    }
+
+    
+    @PostMapping("/api")
+    @ResponseBody
+    public Medicine addMedicine(@RequestBody Medicine m) {
+        return medicineService.addMedicine(m);
+    }
+
+    @GetMapping("/api")
+    @ResponseBody
+    public List<Medicine> getAll() {
+        return medicineService.getAllMedicines();
     }
 
 }

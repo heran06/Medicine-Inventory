@@ -2,6 +2,7 @@ package com.example.MedicineInventory.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 @Entity
 @Table(name = "orders")
 @Data
@@ -10,14 +11,16 @@ import java.math.BigDecimal;
 @Builder
 
 public class Order {
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @ManyToOne
-    private User customer;
-    
-    private BigDecimal totalAmount;
+
+    private String orderId;
+    private String customerName;
+    private String medicineName;
+    private Integer quantity;
+    private BigDecimal totalPrice;
+    private LocalDateTime orderDate;
     private String status;
 
     }

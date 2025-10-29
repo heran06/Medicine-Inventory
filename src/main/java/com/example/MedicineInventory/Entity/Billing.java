@@ -1,6 +1,7 @@
 package com.example.MedicineInventory.Entity;
 import jakarta.persistence.*;
 import lombok.*;
+import java.time.LocalDate;
 import java.time.Instant;
 
 @Entity
@@ -12,13 +13,12 @@ import java.time.Instant;
 public class Billing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long billId;
 
-    @OneToOne
-    private Order order;
-
+    private String customerName;
     private Double totalAmount;
+    private String billingDate;
+    private String paymentMethod;
     private String payStatus;
     private Instant generatedAt;
-    
 }
